@@ -1,0 +1,24 @@
+## OS & IDE
+.DS_Store
+Thumbs.db
+.vs/
+.idea/
+*.user
+*.suo
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## .NET - Build & Compilation
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+*.PublishSettings
+
+## Configuration locale / Secrets .NET
+appsettings*.Development.json
+appsettings*.Local.json
