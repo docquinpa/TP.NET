@@ -1,0 +1,6 @@
+@FTELMarket_HostAddress = http://localhost:5055
+
+GET {{FTELMarket_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
