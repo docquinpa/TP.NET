@@ -49,5 +49,5 @@ services:
 volumes:
   node_modules:
   pnpm-store:
-#  sqlserver-data:
+  sqlserver-data:
 #  postgres-data:

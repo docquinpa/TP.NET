@@ -1,3 +1,5 @@
+using FTELMarket.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace FTELMarket;
 
@@ -7,7 +9,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         var frontCorsPolicy = "AllowFrontend";
-        // Add services to the container.
+
         builder.Services.AddCors(options => 
         {
             options.AddPolicy(frontCorsPolicy, policy => {
@@ -16,13 +18,15 @@ public class Program
                     .AllowAnyMethod();
             });
         });
+
         builder.Services.AddControllers();
-        // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+
+        builder.Services.AddDbContext<FtelMarketDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("FtelMarket")));
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
@@ -31,7 +35,6 @@ public class Program
         app.UseCors(frontCorsPolicy);
         app.UseHttpsRedirection();
         app.UseAuthorization();
-
 
         app.MapControllers();
 
